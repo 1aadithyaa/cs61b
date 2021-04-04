@@ -99,8 +99,15 @@ public class IntList {
      */
     public static IntList catenate(IntList A, IntList B) {
 
-        if(A == null || B == null) {
-            throw new NullPointerException("Arguments cannot be null");
+        if(A == null && B == null) {
+            return null;
+        }
+        if(A == null) {
+            return B;
+        }
+
+        if(B == null) {
+            return A;
         }
 
         IntList a_res = new IntList(A.first, null);
