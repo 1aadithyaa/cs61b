@@ -81,9 +81,12 @@ public class IntList {
      */
 
     public static IntList dcatenate(IntList A, IntList B) {
+<<<<<<< HEAD
         if(A == null || B == null) {
             throw new NullPointerException("Arguments cannot be null");
         }
+=======
+>>>>>>> master
         IntList temp = A;
         while(A.rest != null) {
             A = A.rest;
@@ -97,9 +100,12 @@ public class IntList {
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
+<<<<<<< HEAD
         if(A == null || B == null) {
             throw new NullPointerException("Arguments cannot be null");
         }
+=======
+>>>>>>> master
         IntList a_res = new IntList(A.first, null);
         IntList b_res = new IntList(B.first, null);
         IntList a_ptr = a_res;
