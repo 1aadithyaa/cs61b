@@ -57,6 +57,7 @@ public class LinkedListDeque<Item> {
             sentinel.prev = sentinel.next;
         }
 
+
         size += 1;
 
     }
@@ -141,7 +142,7 @@ public class LinkedListDeque<Item> {
         return p.item;
     }
 
-    public Node getRecursiveHelper(int index) {
+    private Node getRecursiveHelper(int index) {
         if(index == 0) {
             return sentinel.next;
         }

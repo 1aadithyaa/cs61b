@@ -1,34 +1,34 @@
-public class ArrayDeque<Item> {
+public class ArrayDeque<T> {
     /**
      * INVARIANTS
      * front + 1 is the index of the first item of the list
      * back -1 is the index of the last item of the list
      */
-    private Item[] items;
+    private T[] items;
     private int size;
     private int front;
     private int back;
 
 
     public ArrayDeque() {
-        items = (Item[]) new Object[100];
+        items = (T[]) new Object[8];
         size = 0;
-        front = 49;
-        back = 51;
+        front = 0;
+        back = 0;
     }
 
-    public void resizeFront() {
-        Item[] temp = (Item[]) new Object[size*2];
+    private void resizeFront() {
+        T[] temp = (T[]) new Object[size*2];
         System.arraycopy(items, 0, temp, size, size);
         front = size - 1;
     }
 
-    public void resizeBack() {
-        Item[] temp = (Item[]) new Object[size*2];
+    private void resizeBack() {
+        T[] temp = (T[]) new Object[size*2];
         System.arraycopy(items, 0, temp, 0, size);
         back = size;
     }
-    public void addFirst(Item item) {
+    public void addFirst(T item) {
         if(front == -1) {
             resizeFront();
         }
@@ -38,7 +38,7 @@ public class ArrayDeque<Item> {
 
     }
 
-    public void addLast(Item item) {
+    public void addLast(T item) {
         if(back == items.length-1) {
             resizeBack();
         }
@@ -61,16 +61,16 @@ public class ArrayDeque<Item> {
         }
     }
 
-    public Item removeFirst() {
-        Item ret = get(front + 1);
+    public T removeFirst() {
+        T ret = get(front + 1);
         items[front+1] = null;
         front += 1;
         size -= 1;
         return ret;
     }
 
-    public Item removeLast() {
-        Item ret = get(back - 1);
+    public T removeLast() {
+        T ret = get(back - 1);
         items[back - 1] = null;
         back -= 1;
         size -= 1;
@@ -78,7 +78,7 @@ public class ArrayDeque<Item> {
 
     }
 
-    public Item get(int index) {
+    public T get(int index) {
         return items[front + 1 + index];
     }
 }
