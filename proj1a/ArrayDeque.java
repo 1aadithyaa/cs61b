@@ -14,7 +14,7 @@ public class ArrayDeque<T> {
 
     public void addFirst(T item) {
         if (size == items.length) {
-            resize();
+            resize(size * 2);
         }
         items[nextFront] = item;
 
@@ -28,7 +28,7 @@ public class ArrayDeque<T> {
 
     public void addLast(T item) {
         if (size == items.length) {
-            resize();
+            resize(size * 2);
         }
         items[nextBack] = item;
 
@@ -53,7 +53,7 @@ public class ArrayDeque<T> {
         size--;
 
         if (size == items.length / 2) {
-            resizeDown();
+            resize(size);
         }
 
         return item;
@@ -73,7 +73,7 @@ public class ArrayDeque<T> {
         size--;
 
         if (size == items.length / 2) {
-            resizeDown();
+            resize(size);
         }
 
         return item;
@@ -88,29 +88,11 @@ public class ArrayDeque<T> {
             System.out.print(get(i) + " ");
         }
     }
-    private void resizeDown() {
-        T[] newItems = (T[]) new Object[items.length / 2];
 
+    private void resize(int newlen) {
+        T[] newItems = (T[]) new Object[newlen];
         int i = (nextFront + 1) % size;
         int j = 0;
-
-        while (j < size) {
-            newItems[j] = items[i];
-            i = (i + 1) % items.length;
-            j++;
-        }
-        items = newItems;
-        nextFront = items.length - 1;
-        nextBack = size;
-    }
-
-    private void resize() {
-        T[] newItems = (T[]) new Object[items.length * 2];
-
-
-        int i = (nextFront + 1) % size;
-        int j = 0;
-
         while (j < size) {
             newItems[j] = items[i];
             i = (i + 1) % items.length;
