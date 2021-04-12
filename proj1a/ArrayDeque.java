@@ -79,6 +79,7 @@ public class ArrayDeque<T> {
         while (j < size) {
             newItems[j] = items[i];
             i = (i + 1) % trueSize;
+            j++;
         }
     }
 
