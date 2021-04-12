@@ -8,12 +8,11 @@ public class ArrayDeque<T> {
     public ArrayDeque() {
         items = (T[]) new Object[8];
         size = 0;
-        nextFront = 3;
-        nextBack = 4;
+        nextFront = items.length - 1;
+        nextBack = 0;
     }
 
     public void addFirst(T item) {
-        int arraySize = items.length;
         if (size == items.length) {
             resize();
         }
@@ -42,7 +41,7 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
-        if(size == 0) {
+        if (size == 0) {
             return null;
         }
         if (nextFront == items.length - 1) {
@@ -52,11 +51,16 @@ public class ArrayDeque<T> {
         }
         T item = items[nextFront];
         size--;
+
+        if (size == items.length / 2) {
+            resizeDown();
+        }
+
         return item;
     }
 
     public T removeLast() {
-        if(size == 0) {
+        if (size == 0) {
             return null;
         }
 
@@ -67,6 +71,11 @@ public class ArrayDeque<T> {
         }
         T item = items[nextBack];
         size--;
+
+        if (size == items.length / 2) {
+            resizeDown();
+        }
+
         return item;
     }
 
@@ -79,23 +88,38 @@ public class ArrayDeque<T> {
             System.out.print(get(i) + " ");
         }
     }
+    private void resizeDown() {
+        T[] newItems = (T[]) new Object[items.length / 2];
+
+        int i = (nextFront + 1) % size;
+        int j = 0;
+
+        while (j < size) {
+            newItems[j] = items[i];
+            i = (i + 1) % items.length;
+            j++;
+        }
+        items = newItems;
+        nextFront = items.length - 1;
+        nextBack = size;
+    }
 
     private void resize() {
         T[] newItems = (T[]) new Object[items.length * 2];
 
 
-        int i = nextFront + 1 % size;
+        int i = (nextFront + 1) % size;
         int j = 0;
 
         while (j < size) {
             newItems[j] = items[i];
-            i = (i + 1) % size;
+            i = (i + 1) % items.length;
             j++;
         }
 
         items = newItems;
-        nextFront = size;
-        nextBack = items.length - 1;
+        nextFront = items.length - 1;
+        nextBack = size;
     }
 
     public int size() {
