@@ -131,6 +131,12 @@ public class LinkedListDeque<T> {
         return p.item;
     }
 
+    public void printDeque() {
+        for (int i = 0; i < size; i++) {
+            System.out.print(get(i) + " ");
+        }
+    }
+
     private Node getRecursiveHelper(int index) {
         if (index == 0) {
             return sentinel.next;

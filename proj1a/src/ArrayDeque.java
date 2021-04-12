@@ -42,6 +42,9 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
+        if(size == 0) {
+            return null;
+        }
         if (nextFront == items.length - 1) {
             nextFront = 0;
         } else {
@@ -53,6 +56,10 @@ public class ArrayDeque<T> {
     }
 
     public T removeLast() {
+        if(size == 0) {
+            return null;
+        }
+
         if (nextBack == 0) {
             nextBack = items.length - 1;
         } else {
@@ -65,6 +72,12 @@ public class ArrayDeque<T> {
 
     public T get(int index) {
         return items[(nextFront + 1 + index) % items.length];
+    }
+
+    public void printDeque() {
+        for (int i = 0; i < size; i++) {
+            System.out.print(get(i) + " ");
+        }
     }
 
     private void resize() {

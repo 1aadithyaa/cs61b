@@ -56,8 +56,15 @@ public class TestArrayDeque {
         lld.addLast(2);
         lld.addLast(3);
         lld.addLast(4);
+        lld.addLast(4);
+        lld.addLast(4);
+        lld.addLast(4);
+        lld.addLast(4);
+        lld.addLast(4);
+        lld.addLast(4);
 
-        assertEquals(5, lld.size());
+
+        assertEquals(11, lld.size());
 
     }
 
