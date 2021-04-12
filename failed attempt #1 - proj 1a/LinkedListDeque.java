@@ -1,15 +1,13 @@
-public class LinkedListDeque<Item> {
+public class LinkedListDeque<T> {
 
     //Helper class that will hide the naked recursive data structure
     private class Node {
-        private Item item;
+        private T item;
         private Node next;
         private Node prev;
 
-        public Node() {
-            item = null;
-            this.next = null;
-            this.prev = null;
+        public Node(T item) {
+            this.item = item;
         }
 
     }
@@ -42,7 +40,7 @@ public class LinkedListDeque<Item> {
     }
 
 
-    public void addFirst(Item item) {
+    public void addFirst(T item) {
         sentinel.next = new Node();
         sentinel.next.item = item;
         sentinel.next.prev = sentinel;
@@ -62,7 +60,7 @@ public class LinkedListDeque<Item> {
 
     }
 
-    public void addLast(Item item) {
+    public void addLast(T item) {
         Node last = sentinel.prev;
         Node newLast = new Node();
         last.next = newLast;
@@ -88,7 +86,7 @@ public class LinkedListDeque<Item> {
         }
     }
 
-    public Item removeFirst() {
+    public T removeFirst() {
         Node first = sentinel.next;
         Node second = first.next;
         sentinel.next = second;
@@ -99,7 +97,7 @@ public class LinkedListDeque<Item> {
         return first.item;
     }
 
-    public Item removeLast() {
+    public T removeLast() {
         Node last = sentinel.prev;
         Node secondToLast = last.prev;
 
@@ -111,8 +109,8 @@ public class LinkedListDeque<Item> {
         return last.item;
     }
 
-    public Item get(int index) {
-        Item ret = null;
+    public T get(int index) {
+        T ret;
         //If the item is in the back half of the list, you only need to search at most half the list
         //You can do this by starting from the last node, which sentinel.prev points to
         if(index > size/2) {
@@ -137,7 +135,7 @@ public class LinkedListDeque<Item> {
         return ret;
     }
 
-    public Item getRecursive(int index) {
+    public T getRecursive(int index) {
         Node p = getRecursiveHelper(index);
         return p.item;
     }
