@@ -28,7 +28,6 @@ public class ArrayDeque<T> {
     }
 
     public void addLast(T item) {
-        int arraySize = items.length;
         if (size == items.length) {
             resize();
         }
@@ -71,16 +70,19 @@ public class ArrayDeque<T> {
     private void resize() {
         T[] newItems = (T[]) new Object[items.length * 2];
 
-        int trueSize = items.length;
 
-        int i = nextFront + 1 % trueSize;
+        int i = nextFront + 1 % size;
         int j = 0;
 
         while (j < size) {
             newItems[j] = items[i];
-            i = (i + 1) % trueSize;
+            i = (i + 1) % size;
             j++;
         }
+
+        items = newItems;
+        nextFront = size;
+        nextBack = items.length - 1;
     }
 
     public int size() {
