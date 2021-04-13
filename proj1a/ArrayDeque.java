@@ -83,10 +83,10 @@ public class ArrayDeque<T> {
     }
 
     public T get(int index) {
-        if(index < 0 || index > size - 1) {
+        if (index < 0 || index > size - 1) {
             return null;
         }
-        if(size == 0) {
+        if (size == 0) {
             return null;
         }
         return items[(nextFront + 1 + index) % items.length];
@@ -100,7 +100,7 @@ public class ArrayDeque<T> {
 
     private void resize(int newlen) {
         T[] newItems = (T[]) new Object[newlen];
-        int i = (nextFront + 1) % size;
+        int i = (nextFront + 1) % items.length;
         int j = 0;
         while (j < size) {
             newItems[j] = items[i];
