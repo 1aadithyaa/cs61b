@@ -13,7 +13,7 @@ public class ArrayDeque<T> {
 
     public void addFirst(T item) {
         if (size == items.length) {
-            resize(size * 2);
+            resize(items.length * 2);
         }
         items[nextFront] = item;
 
@@ -27,7 +27,7 @@ public class ArrayDeque<T> {
 
     public void addLast(T item) {
         if (size == items.length) {
-            resize(size * 2);
+            resize(items.length * 2);
         }
         items[nextBack] = item;
 
@@ -52,8 +52,8 @@ public class ArrayDeque<T> {
         items[nextFront] = null;
         size--;
 
-        if (size == items.length / 4) {
-            resize(size * 2);
+        if (size > 16 && (double) size / items.length < 0.25) {
+            resize(items.length / 2);
         }
 
         return item;
@@ -73,12 +73,9 @@ public class ArrayDeque<T> {
         items[nextBack] = null;
         size--;
 
-        if (size == items.length / 4) {
-            resize(size * 2);
+        if (size >= 16 && (double) size / items.length < 0.25) {
+            resize(items.length / 2);
         }
-
-
-
         return item;
     }
 
