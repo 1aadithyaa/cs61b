@@ -1,4 +1,3 @@
-
 public class ArrayDeque<T> {
     private T[] items;
     private int size;
@@ -50,10 +49,11 @@ public class ArrayDeque<T> {
             nextFront++;
         }
         T item = items[nextFront];
+        items[nextFront] = null;
         size--;
 
-        if (size == items.length / 2) {
-            resize(size);
+        if (size == items.length / 4) {
+            resize(size * 2);
         }
 
         return item;
@@ -70,16 +70,25 @@ public class ArrayDeque<T> {
             nextBack--;
         }
         T item = items[nextBack];
+        items[nextBack] = null;
         size--;
 
-        if (size == items.length / 2) {
-            resize(size);
+        if (size == items.length / 4) {
+            resize(size * 2);
         }
+
+
 
         return item;
     }
 
     public T get(int index) {
+        if(index < 0 || index > size - 1) {
+            return null;
+        }
+        if(size == 0) {
+            return null;
+        }
         return items[(nextFront + 1 + index) % items.length];
     }
 
