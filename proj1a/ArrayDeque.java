@@ -52,7 +52,7 @@ public class ArrayDeque<T> {
         items[nextFront] = null;
         size--;
 
-        if (size >= 16 && (size) / items.length < 0.25) {
+        if (size >= 16 && (size - 1.0) / items.length < 0.25) {
             resize(items.length / 2);
         }
 
@@ -73,7 +73,7 @@ public class ArrayDeque<T> {
         items[nextBack] = null;
         size--;
 
-        if (size >= 16 && (size) / items.length < 0.25) {
+        if (size >= 16 && (size - 1.0) / items.length < 0.25) {
             resize(items.length / 2);
         }
         return item;
