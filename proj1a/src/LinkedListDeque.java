@@ -1,6 +1,6 @@
 /**
  * @author Aadithyaa Sridharbaskari
- * @param <T>
+ * @param <T> Type that you pass into the list
  */
 public class LinkedListDeque<T> {
     private class Node {

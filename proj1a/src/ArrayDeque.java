@@ -1,3 +1,7 @@
+/**
+ * @author Aadithyaa Sridharbaskari
+ * @param <T>
+ */
 public class ArrayDeque<T> {
     private T[] items;
     private int size;
