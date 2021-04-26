@@ -135,6 +135,19 @@ public class IntList {
         return newA;
     }
 
+    public static IntList reverse(IntList A) {
+        IntList prev = null;
+        IntList curr = A;
+        IntList next = null;
+        while (curr != null) {
+            next = curr.rest;
+            curr.rest = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
+    }
+
 
     /**
      * DO NOT MODIFY ANYTHING BELOW THIS LINE! Many of the concepts below here
