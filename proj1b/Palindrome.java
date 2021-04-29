@@ -33,7 +33,7 @@ public class Palindrome {
         while (c.size() >= 2) {
             char f = c.removeFirst();
             char l = c.removeLast();
-            if (!cc.equalChars(f,l)) {
+            if (!cc.equalChars(f, l)) {
                 return false;
             }
         }

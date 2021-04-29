@@ -60,9 +60,9 @@ public class TestPalindrome {
         String npal1 = "bob";
         String npal2 = "joj";
         String npal3 = " hoh";
-        assertTrue(palindrome.isPalindrome(pal1,offByOne));
-        assertTrue(palindrome.isPalindrome(pal2,offByOne));
-        assertTrue(palindrome.isPalindrome(pal3,offByOne));
+        assertTrue(palindrome.isPalindrome(pal1, offByOne));
+        assertTrue(palindrome.isPalindrome(pal2, offByOne));
+        assertTrue(palindrome.isPalindrome(pal3, offByOne));
         assertFalse(palindrome.isPalindrome(npal1, offByOne));
         assertFalse(palindrome.isPalindrome(npal2, offByOne));
         assertFalse(palindrome.isPalindrome(npal3, offByOne));
