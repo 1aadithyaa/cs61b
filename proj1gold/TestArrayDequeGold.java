@@ -23,7 +23,7 @@ public class TestArrayDequeGold {
             else if (numberBetweenZeroAndOne < 0.6) {
                 output += "removeFirst()";
                 if (sad.removeFirst() != null || ads.removeFirst() != null) {
-                    assertEquals(output, sad.removeFirst(), ads.removeFirst());
+                    assertEquals(output, ads.removeFirst(), sad.removeFirst());
                 }
                 else {
                     continue;
@@ -32,7 +32,7 @@ public class TestArrayDequeGold {
             else if (numberBetweenZeroAndOne < 0.8) {
                 output += "removeLast()";
                 if (sad.removeLast() != null || ads.removeLast() != null) {
-                    assertEquals(output, sad.removeLast(), ads.removeLast());
+                    assertEquals(output, ads.removeLast(), sad.removeLast());
                 }
                 else {
                     continue;
@@ -40,8 +40,8 @@ public class TestArrayDequeGold {
             }
             else {
                 output += "removeFirst()";
-                if (sad.removeFirst() != null && ads.removeFirst() != null) {
-                    assertEquals(output, sad.removeFirst(), ads.removeFirst());
+                if (sad.removeFirst() != null || ads.removeFirst() != null) {
+                    assertEquals(output, ads.removeFirst(), sad.removeFirst());
                 }
                 else {
                     continue;
